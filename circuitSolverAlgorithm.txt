@@ -1,0 +1,37 @@
+Circuit Solver Algorithm
+------------------------
+
+1. clc/clear/close all
+2. define the resistance values (r1=4.7, r2=.78, r3=1 and r4=4.7) in kOhms
+3. create symbolic symbols (x, y and z) for the currents through the circuit
+4. create a system of 3 equations using KVL and mesh current method
+	(3.3-r1*x-r3*y=0)
+	(r3*y-r4*z=0)
+	(r4*z-r2*(x-y-z)-5=0)
+5. use symbolic functions (equationsToMatrix & linsolve) to solve the system of equations
+6. take the absolute value of x, y and z
+7. solve for the currents through the resistors using x, y, and z
+	i1=x
+	i2=x-y-z
+	i3=y
+	i4=z
+8. solve for the voltages through the resistors 
+	v1=i1*r1
+	v2=i2*r2
+	v3=i3*r3
+	v4=i4*r4
+9. solve for the power absorbed by the resistors
+	p1=i1*v1;
+	p2=i2*v2;
+	p3=i3*v3;
+	p4=i4*v4;
+10. put the variables in a matrix named output. 
+	output=[r1,i1,v1,p1;
+		r2,i2,v2,p2;
+		r3,i3,v3,p3;
+		r4,i4,v4,p4]
+10. display header to the table (resistance    current    voltage    power abs)
+11. use for loop to display the rest of the table
+	for i = 1:4
+		fprintf('%.4f           %.4f        %.4f       %.4f\n',output(i,1),output(i,2),output(i,3),output(i,4));
+	end

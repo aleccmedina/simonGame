@@ -1,0 +1,72 @@
+Simon Game Algorithm (main script)
+----------------------------------
+
+1. clc/clear/close all
+2. create arduino object and store it in variable a
+3. write 5 volt to the PWM pin thats connected to the + rail of the bread board
+	- we do this along with the main 5v pin
+	- the main 5v pin isn't enough voltage to send a strong current through the whole breadboard
+4. write 0 volts to the PWM pins that are connected to the LEDs
+	- we do this to make sure they are off
+5. again=1;score=0;previous=0;
+6. while again=1
+	7. let the user know the game is about to begin
+	8. seq=[]
+	9. for skillLevel = 1:4
+		10. if skillLevel=1
+			for i=1:6
+				seq=Blink(a,seq,skillLevel)
+				correct=Response(a,seq);
+				if correct==0
+					break;	
+				else
+					pause(.5);
+					score=score+1;
+				end
+			end
+		11. elseif skillLevel=2
+			for i=1:2
+				seq=Blink(a,seq,skillLevel)
+				correct=Response(a,seq);
+				if correct==0
+					break;	
+				else
+					pause(.5);
+					score=score+1;
+				end
+			end
+		12. elseif skillLevel=3
+			for i=1:4
+				seq=Blink(a,seq,skillLevel)
+				correct=Response(a,seq);
+				if correct==0
+					break;	
+				else
+					pause(.5);
+					score=score+1;
+				end
+			end
+		13. else
+			for i=1:19
+				seq=Blink(a,seq,skillLevel)
+				correct=Response(a,seq);
+				if correct==0
+					break;	
+				else
+					pause(.5);
+					score=score+1;
+				end
+			end
+		    end
+		14. if correct=0
+			break;
+		    end
+	end
+	15. if correct==0
+		display you lost message
+	16. else
+		display you won message
+
+	    end
+	17. again=menu('Would you like to try simon again?','yes','no')
+    end
