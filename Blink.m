@@ -1,5 +1,4 @@
 %% Blink
-
 function [seq]=Blink(a,seq,skillLevel)
     seq=[seq,randi([1,4])];
 
@@ -31,6 +30,7 @@ function [seq]=Blink(a,seq,skillLevel)
            pause(time)
            writePWMVoltage(a,'D2',0);
        end
+       pause(.5)
     end
 
 end
